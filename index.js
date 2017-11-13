@@ -50,9 +50,7 @@ $(document).ready(function() {
 	function showNextImage(photoId) {
 		var singleResult = /weekend0([0-9])/g.exec(photoId);
 		if (singleResult) {
-			if (singleResult[1] == '7') {
-				showPhotoModal('weekend09');
-			} else if (singleResult[1] == '9') {
+			if (singleResult[1] == '9') {
 				showPhotoModal('weekend10');
 			} else {
 				showPhotoModal('weekend0' + (parseInt(singleResult[1]) + 1));
@@ -68,11 +66,8 @@ $(document).ready(function() {
 	function showPrevImage(photoId) {
 		var singleResult = /weekend0([0-9])/g.exec(photoId);
 		if (singleResult) {
-			if (singleResult[1] == '9') {
-				showPhotoModal('weekend07');
-			} else {
-				showPhotoModal('weekend0' + (parseInt(singleResult[1]) - 1));
-			}
+			showPhotoModal('weekend0' + (parseInt(singleResult[1]) - 1));
+
 		} else {
 			var doubleResult = /weekend([0-9][0-9])/g.exec(photoId);
 			if (doubleResult) {
