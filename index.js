@@ -22,7 +22,7 @@ $(document).ready(function() {
 	}
 
 	function showPhotoModal(photoId) {
-		console.log(photoId);
+		$('.container').off();
 		var template = $('#photoModalTemplate').html();
 		var rendered = Mustache.render(template, {
 			photo: photoId,
@@ -40,6 +40,12 @@ $(document).ready(function() {
 		});
 
 		openModal('#photoModal');
+
+		setTimeout(function() {
+			$('.container').click(function() {
+				closeModal();
+			});
+		}, 0);
 	}
 
 	$('a.photo').click(function() {
