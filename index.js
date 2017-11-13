@@ -27,7 +27,9 @@ $(document).ready(function() {
 		var rendered = Mustache.render(template, {
 			photo: photoId,
 			showNext: photoId != 'weekend48',
-			showPrev: photoId != 'weekend01'
+			showPrev: photoId != 'weekend01',
+			description: getDescription(photoId),
+			title: getTitle(photoId)
 		});
 		$('#photoModal').html(rendered);
 
@@ -52,6 +54,14 @@ $(document).ready(function() {
 		var id = $(this).data('photo');
 		showPhotoModal(id);
 	});
+
+	function getDescription(photoId) {
+		return  $("a[data-photo='" + photoId + "']").data('desc');
+	}
+
+	function getTitle(photoId) {
+		return $("a[data-photo='" + photoId + "']").next().text();
+	}
 
 	function showNextImage(photoId) {
 		var singleResult = /weekend0([0-9])/g.exec(photoId);
